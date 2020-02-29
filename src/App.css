@@ -244,4 +244,7 @@ font-size: 12px;
   .conditions{
     margin: 0;
   }
+  .forecastContainer{
+    display: none;
+  }
 }
