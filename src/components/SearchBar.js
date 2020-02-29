@@ -10,6 +10,9 @@ export default class SearchBar extends Component {
     if(this.state.city === ''){
       return false;
     }
+    if(e.key === 'Enter'){
+      e.target.blur()
+    }
     localStorage.setItem('city', this.state.city)
     this.props.newSubmit(this.state.city)
     console.log(this.state.city);
