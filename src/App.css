@@ -244,6 +244,9 @@ font-size: 12px;
   .conditions{
     margin: 0;
   }
+ 
+}
+@media(max-height: 500px){
   .forecastContainer{
     display: none;
   }
