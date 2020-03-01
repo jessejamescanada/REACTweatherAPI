@@ -13,18 +13,19 @@ export default class SearchBar extends Component {
     if(this.state.city === ''){
       err = <strong>Error - Please try again</strong> 
       this.setState({errormessage: err})
+      localStorage.clear()
+      setTimeout(() => {
+        this.setState({errormessage: ''})
+        err = ''
+      }, 3000);
       // return false;
-    }
-    
+    }else if(this.state.city !==null){
     city = localStorage.setItem('city', this.state.city)
     this.props.newSubmit(this.state.city)
     console.log(this.state.city);
     this.setState({city: ''})
-    setTimeout(() => {
-      this.setState({errormessage: ''})
-      err = ''
-    }, 3000);
-    
+
+  }
   }
 
 
