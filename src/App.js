@@ -30,10 +30,18 @@ export default class App extends Component {
     forecastTemp3: '',
     forecastIcon3: '',
     forecastWind3: '',
+    defaultCity: 'Buffalo'
   };
 
-   componentDidMount = (city=localStorage.getItem('city')) => {
-     fetch(
+
+   componentDidMount = (city) => {
+    if(localStorage.getItem('city') === null){
+      city = this.state.defaultCity
+    }else{
+      city = localStorage.getItem('city')
+    }
+  
+    fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.state.apiKey}&units=imperial`
     )
       .then(response => response.json())

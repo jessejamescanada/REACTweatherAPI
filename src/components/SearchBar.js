@@ -2,21 +2,29 @@ import React, { Component } from 'react'
 
 export default class SearchBar extends Component {
   state = {
-    city: ''
+    city: '',
+    errormessage: ''
   }
 
   onFormSubmit = e => {
+    let err = ''
+    let city = ''
     e.preventDefault();
     if(this.state.city === ''){
-      return false;
+      err = <strong>Error - Please try again</strong> 
+      this.setState({errormessage: err})
+      // return false;
     }
-    if(e.key === 'Enter'){
-      e.target.blur()
-    }
-    localStorage.setItem('city', this.state.city)
+    
+    city = localStorage.setItem('city', this.state.city)
     this.props.newSubmit(this.state.city)
     console.log(this.state.city);
     this.setState({city: ''})
+    setTimeout(() => {
+      this.setState({errormessage: ''})
+      err = ''
+    }, 3000);
+    
   }
 
 
@@ -26,10 +34,12 @@ export default class SearchBar extends Component {
         <form className='form' onSubmit={this.onFormSubmit}>
           <div>
             <input type="text"
+            
             value={this.state.city}
             onChange={e => this.setState({city: e.target.value})}
             placeholder="Enter a city..."/>
           </div>
+          <h3 className='err'>{this.state.errormessage}</h3>
         </form>
       </div>
     )

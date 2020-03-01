@@ -136,9 +136,9 @@ font-size: 12px;
 font-size: 12px;
 }
 
-.error{
+.err{
   color: red;
-  display: none;
+  margin: 0;
 }
 
 /* media */
