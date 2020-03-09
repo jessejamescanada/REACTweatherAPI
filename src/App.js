@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import SearchBar from "./components/SearchBar";
 import Weather from "./components/Weather";
 import Forecast from './components/Forecast'
+import Modal from './components/Modal'
+
 
 export default class App extends Component {
   state = {
@@ -30,7 +31,7 @@ export default class App extends Component {
     forecastTemp3: '',
     forecastIcon3: '',
     forecastWind3: '',
-    defaultCity: 'Buffalo'
+    defaultCity: 'Buffalo',
   };
 
 
@@ -94,8 +95,7 @@ export default class App extends Component {
   
   render() {
     return (
-      <div className="container">
-        <SearchBar newSubmit={this.componentDidMount} />
+      <div className="container">        
         <Weather
           everything={this.state.everything}
           description={this.state.description}
@@ -104,6 +104,8 @@ export default class App extends Component {
           humidity={this.state.humidity}
           wind={this.state.wind}
           icon={this.state.icon}
+        />
+        <Modal newSubmit={this.componentDidMount} 
         />
         <Forecast 
         date={this.state.forecastDate}
